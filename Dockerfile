@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7
 
 # Fix deprecated CentOS repo URLs
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
