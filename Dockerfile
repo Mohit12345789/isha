@@ -1,5 +1,5 @@
 # Use RHEL UBI 9 Apache base image
-FROM registry.access.redhat.com/ubi9/httpd-24
+FROM centos:7
 
 # Fix deprecated repo URLs
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
