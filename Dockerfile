@@ -8,7 +8,7 @@ RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
 RUN yum install -y httpd wget unzip && \
     mkdir -p /var/www/html && \
     cd /var/www && \
-    wget https://html5up.net/uploads/html5up-solid-state.zip && \
+    wget https://html5up.net/uploads/demos/solid-state.zip && \
     unzip html5up-solid-state.zip -d html && \
     mv html/html5up-solid-state/* html/ && \
     rm -rf html5up-solid-state.zip html/html5up-solid-state && \
