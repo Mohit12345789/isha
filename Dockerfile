@@ -1,6 +1,10 @@
 # Use CentOS 7 base image
 FROM centos:7
 
+# Disable mirrorlist and use Vault for baseurl
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
 # Install Apache, wget, unzip
 RUN yum install -y httpd wget unzip && \
     mkdir -p /var/www/html && \
