@@ -1,5 +1,5 @@
 # Use CentOS latest image
-FROM centos:latest
+FROM centos:7
 
 # Install Apache, wget, and unzip
 RUN dnf install -y httpd wget unzip && \
