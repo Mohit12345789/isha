@@ -1,22 +1,18 @@
-# Use CentOS 7 base image
 FROM centos:7
 
-# Disable mirrorlist and use Vault for baseurl
-RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+# Fix deprecated repo URLs
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
+    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
-# Install Apache, wget, unzip
+# Install required packages and deploy HTML5UP Solid-State template
 RUN yum install -y httpd wget unzip && \
     mkdir -p /var/www/html && \
     cd /var/www && \
-    wget https://html5up.net/uploads/demos/solid-state.zip && \
-    unzip solid-state.zip -d html && \
-    mv html/solid-state/* html/ && \
-    rm -rf html/solid-state solid-state.zip && \
+    wget https://html5up.net/uploads/html5up-solid-state.zip && \
+    unzip html5up-solid-state.zip -d html && \
+    mv html/html5up-solid-state/* html/ && \
+    rm -rf html5up-solid-state.zip html/html5up-solid-state && \
     yum clean all
 
-# Expose Apache port
 EXPOSE 80
-
-# Start Apache in foreground
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
