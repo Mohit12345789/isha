@@ -10,8 +10,8 @@ RUN yum install -y httpd wget unzip -y
 # Set working directory
 WORKDIR /var/www/html
 RUN wget https://templatemo.com/download/templatemo_585_barber_shop && mv templatemo_585_barber_shop templatemo_585_barber_shop.zip
-RUN cp -p templatemo_585_barber_shop/* .
-RUN rm-rf templatemo_585_barber_shop.zip
+RUN cp -rvf templatemo_585_barber_shop/* .
+RUN rm -rf templatemo_585_barber_shop.zip
 
 # Expose HTTP port
 EXPOSE 80
