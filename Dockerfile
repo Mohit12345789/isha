@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM rockylinux:9
 
 # Fix deprecated CentOS repo URLs
 #RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
